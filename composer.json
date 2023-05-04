@@ -1,5 +1,5 @@
 {
-  "name": "yaaqiu/php-alibabasdk",
+  "name": "AlbertWill/php-alibabasdk",
   "description": "1688开放平台 接口sdk",
   "type": "library",
   "license": "MIT",
@@ -10,8 +10,8 @@
   },
   "authors": [
     {
-      "name": "YanqiuXu",
-      "email": "3218177964@qq.com"
+      "name": "Jacky",
+      "email": "1073658683@qq.com"
     }
   ],
   "require": {
