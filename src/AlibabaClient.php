@@ -103,7 +103,6 @@ class AlibabaClient
         return $result;
     }
 
-
     /**
      * post请求
      * @param string $urlInfo
@@ -135,4 +134,5 @@ class AlibabaClient
         }
         return $result;
     }
+
 }

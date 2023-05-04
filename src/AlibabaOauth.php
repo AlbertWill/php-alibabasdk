@@ -65,4 +65,22 @@ class AlibabaOauth
         return Request::post(sprintf($this->tokenUrl, $appKey), $params);
     }
 
+    /**
+     * 刷新accessToken
+     * @param $appKey
+     * @param $appSecret
+     * @param $refresh_token
+     * @return bool|string
+     */
+    public function refreshToken($appKey, $appSecret, $refreshToken)
+    {
+        $params = [
+            'grant_type'         => 'refresh_token',
+            'client_id'          => $appKey,
+            'client_secret'      => $appSecret,
+            'refresh_token'       => $refreshToken,
+        ];
+        return Request::post(sprintf($this->tokenUrl, $appKey), $params);
+    }
+
 }
