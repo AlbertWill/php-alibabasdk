@@ -5,7 +5,7 @@
 > 运行环境要求PHP7.1+
 
 ```shell
-$ composer require AlbertWill/php-alibabasdk
+$ composer require albert-will/php-alibabasdk
 ```
 
 ## 快速使用
