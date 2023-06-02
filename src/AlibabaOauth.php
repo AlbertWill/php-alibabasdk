@@ -20,6 +20,18 @@ class AlibabaOauth
     private $tokenUrl = 'https://gw.open.1688.com/openapi/http/1/system.oauth2/getToken/%s';
 
     /**
+     * 生成授权地址
+     * @param $appKey
+     * @param $redirectUri
+     * @param string $state
+     * @return string
+     */
+    public function genOauthUrl($appKey, $redirectUri, string $state = 'cross-1688'):string
+    {
+        return sprintf($this->oauthUrl, $appKey, urlencode($redirectUri), $state);
+    }
+
+    /**
      * 授权
      * @param $appKey
      * @param $appSecret
@@ -28,15 +40,9 @@ class AlibabaOauth
      * @return array
      * @throws AlibabaException
      */
-    public function oauth($appKey, $appSecret, $redirectUri, string $state = 'cross-1688'): array
+    public function oauth($appKey, $appSecret, $redirectUri, $code): array
     {
-        $params = $_GET;
-        if (!(array_key_exists('code', $params) && $state == $params['state'])) {
-            $this->oauthUrl = sprintf($this->oauthUrl, $appKey, urlencode($redirectUri), $state);
-            header(sprintf('Location:%s', $this->oauthUrl));
-            exit;
-        }
-        $res = self::accessToken($appKey, $appSecret, $redirectUri, $params['code']);
+        $res = self::accessToken($appKey, $appSecret, $redirectUri, $code);
         $data = json_decode($res, true);
         if (!array_key_exists('access_token', $data)) {
             throw new AlibabaException($data['error_description']);
